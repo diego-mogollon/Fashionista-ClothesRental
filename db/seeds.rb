@@ -5,25 +5,26 @@ User.destroy_all
 Category.destroy_all
 puts "database is clean"
 
-puts 'Creating 6 user...'
-user_1 = User.create(email: "user@user.com", password: 111111)
-user_2 = User.create(email: "paal@user.com", password: 222222)
-user_3 = User.create(email: "aparna@user.com", password: 333333)
-user_4 = User.create(email: "diego@user.com", password: 444444)
-user_5 = User.create(email: "cheena@user.com", password: 555555)
-user_6 = User.create(email: "guido@user.com", password: 666666)
-user_7 = User.create(email: "ray@user.com", password: 777777)
-user_8 = User.create(email: "christine@user.com", password: 888888)
-user_9 = User.create(email: "nine@user.com", password: 999999)
-user_10 = User.create(email: "ten@user.com", password: 000000)
-user_11 = User.create(email: "eleven@user.com", password: 111111)
-user_12 = User.create(email: "twelve@user.com", password: 222222)
-user_13 = User.create(email: "thirteen@user.com", password: 333333)
-user_14 = User.create(email: "fourteen@user.com", password: 444444)
-user_15 = User.create(email: "fifteen@user.com", password: 555555)
+puts 'Creating 15 user...'
+user_1 = User.create!(email: "user@user.com", password: 111111)
+user_2 = User.create!(email: "paal@user.com", password: 222222)
+user_3 = User.create!(email: "aparna@user.com", password: 333333)
+user_4 = User.create!(email: "diego@user.com", password: 444444)
+user_5 = User.create!(email: "cheena@user.com", password: 555555)
+user_6 = User.create!(email: "guido@user.com", password: 666666)
+user_7 = User.create!(email: "ray@user.com", password: 777777)
+user_8 = User.create!(email: "christine@user.com", password: 888888)
+user_9 = User.create!(email: "nine@user.com", password: 999999)
+user_10 = User.create!(email: "ten@user.com", password: 111111)
+user_11 = User.create!(email: "eleven@user.com", password: 111111)
+user_12 = User.create!(email: "twelve@user.com", password: 222222)
+user_13 = User.create!(email: "thirteen@user.com", password: 333333)
+user_14 = User.create!(email: "fourteen@user.com", password: 444444)
+user_15 = User.create!(email: "fifteen@user.com", password: 555555)
 puts "#{User.count} User created..."
 
-puts 'Creating 6 items...'
+puts 'Creating 15 items...'
+
 item_1 = Item.create(name: 'Summer Splash', price: rand(30..100), description: "Phasellus  pretium mauris erat, at egestas massa accumsan vel.", size: "XS", user_id: user_1.id )
 file = URI.open('https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80')
 item_1.photo.attach(io: file, filename: 'photo1.jpg', content_type: 'image/jpg')
@@ -86,10 +87,13 @@ item_15.photo.attach(io: file, filename: 'photo15.jpg', content_type: 'image/jpg
 
 puts "#{Item.count} Item created..."
 
+puts 'Creating 2 bookings'
+booking_1 = Booking.create(user_id: user_1.id, item_id: item_2.id, start_date: Time.now, end_date: Time.now + 1.day)
+booking_2 = Booking.create(user_id: user_2.id, item_id: item_1.id, start_date: Time.now, end_date: Time.now + 1.day)
 
-[['Date Night', 'category_images/cocktail'], ['Daytime', 'category_images/sun'],['Work','category_images/suitcase'], ['Casual', 'category_images/dress'], ['Everyday', 'category_images/clothes-hanger'], ['Maternity', 'category_images/mother']].each  do |category|
+
+[['Date Night', 'category_images/cocktail.svg'], ['Daytime', 'category_images/sun.svg'],['Work','category_images/suitcase.svg'], ['Casual', 'category_images/dress.svg'], ['Everyday', 'category_images/clothes-hanger.svg'], ['Maternity', 'category_images/mother.svg']].each  do |category|
   Category.create(name: category[0], image: category[1])
   end
-
 
 puts 'Finished!'
