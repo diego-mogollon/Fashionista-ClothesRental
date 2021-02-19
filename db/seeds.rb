@@ -24,6 +24,7 @@ user_15 = User.create!(email: "fifteen@user.com", password: 555555)
 puts "#{User.count} User created..."
 
 puts 'Creating 15 items...'
+
 item_1 = Item.create(name: 'Summer Splash', price: rand(30..100), description: "Phasellus  pretium mauris erat, at egestas massa accumsan vel.", size: "XS", user_id: user_1.id )
 file = URI.open('https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80')
 item_1.photo.attach(io: file, filename: 'photo1.jpg', content_type: 'image/jpg')
